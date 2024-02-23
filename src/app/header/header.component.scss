@@ -1,0 +1,36 @@
+
+.navbar-brand {
+  font-family: NotoSansCJKtc-Black;
+  font-size: 18.26px;
+  color: #ffffff;
+}
+
+.nav-item {
+  font-family: MicrosoftJhengHeiRegular;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.background-image {
+  /*  import background image, do not repeat the image, center the image, and fix the image on the screen when scrolling */
+  background: url('../../assets/header_desktop.png') no-repeat center fixed;
+  /*  set the background image to cover the entire screen while maintaining the aspect ratio,
+  and the why I use the -webkit, -moz, -o, and background-size properties
+   is to ensure that the background image is displayed correctly in all browsers */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+.img-fork{
+  width: 15px;
+  height: auto;
+  color: #ffffff;
+}

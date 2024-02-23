@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+// 引入 Bootstrap 的 functions 和 variables
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+// 自定義變數
+$grid-breakpoints: (
+  xs: 0,
+  // sm: 480px,
+  // md: 720px,
+  // lg: 960px,
+  // xl: 1140px,
+  // xxl: 1440px
+  mobile: 327px,
+  tablet: 799px,
+  desktop: 1024px,
+);
+// 自定義 mixin
+// @mixin make-col-important($size, $columns: $grid-columns) {
+//   flex: 0 0 auto !important;
+//   width: percentage($size / $columns) !important;
+// }
+// 將$grid-breakpoints中定義的breakpoint生成對應的grid classes。
+@each $breakpoint in map-keys($grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+  @for $i from 1 through 12 {
+    .col#{$infix}-#{$i} {
+      @include make-col($i);
+    }
+  }
+}
+// @each $breakpoint in map-keys($grid-breakpoints) {
+//   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+//   @for $i from 1 through 12 {
+//     .col#{$infix}-#{$i} {
+//       @include make-col-important($i);
+//     }
+//   }
+// }
+// 引入 Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+.leftfix {
+  float: left;
+}
+
+.rightfix {
+  float: right;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
