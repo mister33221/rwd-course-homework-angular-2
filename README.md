@@ -1,27 +1,58 @@
-# RwdCourseHomeworkAngular2
+## Environment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.12.
+- Angular CLI: Angular CLI: 16.2.12
+- Node: 20.11.0
+- npm: 10.4.0
+- Bootstrap: 5.2.3
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Create your own breakpoints definition file in the root directory of your project. For example, create a file named customize-breakpoint.scss and add the following code:
+```scss
+$grid-breakpoints: (
+  xs: 0,
+  mobile: 327px,
+  sm: 576px,
+  md: 768px,
+  tablet: 799px,
+  lg: 992px,
+  desktop: 1024px,
+  xl: 1200px,
+  xxl: 1400px
+);
 
-## Code scaffolding
+$container-max-widths: (
+  mobile: 327px,
+  sm: 540px,
+  md: 720px,
+  tablet: 768px,
+  lg: 960px,
+  desktop: 1024px,
+  xl: 1140px,
+  xxl: 1320px
+);
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. In the root directory, open style.css and add the following line to the top of the file:
+```css
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables"; // The the bootstrap breakpoint variables are defined here
+@import "customize-breakpoint.scss"; // Your custom breakpoints
+@import "../node_modules/bootstrap/scss/mixins"; 
+@import "../node_modules/bootstrap/scss/bootstrap"; // This has to be the last import
+```
+3. Then you can use the new breakpoints in your html and scss files. For example:
+```html
+<div class="col-desktop-4 col-tablet-4 col-mobile-12">
+  <p>Content</p>
+</div>
+```
+```scss
+@media (min-width: $tablet) {
+  .col-tablet-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+```
+4. Restart the server let it compile the changes.
