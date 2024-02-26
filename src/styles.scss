@@ -1,49 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
-// 引入 Bootstrap 的 functions 和 variables
 
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
+@import "./customize-breakpoing.scss";
 @import "../node_modules/bootstrap/scss/mixins";
 
-// 自定義變數
-$grid-breakpoints: (
-  xs: 0,
-  // sm: 480px,
-  // md: 720px,
-  // lg: 960px,
-  // xl: 1140px,
-  // xxl: 1440px
-  mobile: 327px,
-  tablet: 799px,
-  desktop: 1024px,
-);
-// 自定義 mixin
-// @mixin make-col-important($size, $columns: $grid-columns) {
-//   flex: 0 0 auto !important;
-//   width: percentage($size / $columns) !important;
-// }
-// 將$grid-breakpoints中定義的breakpoint生成對應的grid classes。
-@each $breakpoint in map-keys($grid-breakpoints) {
-  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+// This specific for the header component,
+// I should found a way to move this to the header component scss file
 
-  @for $i from 1 through 12 {
-    .col#{$infix}-#{$i} {
-      @include make-col($i);
-    }
+@include media-breakpoint-down(mobile) {
+  .overlay-title div {
+    display: block;
   }
 }
-// @each $breakpoint in map-keys($grid-breakpoints) {
-//   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-//   @for $i from 1 through 12 {
-//     .col#{$infix}-#{$i} {
-//       @include make-col-important($i);
-//     }
-//   }
-// }
-// 引入 Bootstrap
-@import "../node_modules/bootstrap/scss/bootstrap";
+@include media-breakpoint-up(mobile) {
+  .overlay-title div {
+    display: none;
+  }
+}
 
+// specific for the main-chef component
+
+// .main-chef-img-section if @media max-width >= 79px d-flex justify-content-end, else d-flex justify-content-center
+.main-chef-img-section {
+  @include media-breakpoint-down(tablet) {
+    display: flex;
+    justify-content: center;
+  }
+  @include media-breakpoint-up(tablet) {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+.main-chef-content .main-chef-name {
+  @include media-breakpoint-down(tablet) {
+    margin-top: 30px;
+  }
+  @include media-breakpoint-up(tablet) {
+    margin-top: 81px;
+  }
+}
+
+// for global styles
 
 .leftfix {
   float: left;
@@ -58,6 +57,10 @@ $grid-breakpoints: (
   display: block;
   clear: both;
 }
+li {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+/* Importing Bootstrap SCSS file. This import should be at the end of the file */
+@import "../node_modules/bootstrap/scss/bootstrap";

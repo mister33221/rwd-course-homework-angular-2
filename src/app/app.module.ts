@@ -9,7 +9,6 @@ import { MainChefComponent } from './main-chef/main-chef.component';
 import { CommentsComponent } from './comments/comments.component';
 import { FormComponent } from './form/form.component';
 import { FooterComponent } from './footer/footer.component';
-import { TestComponent } from './test/test.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommentsComponent,
     FormComponent,
     FooterComponent,
-    TestComponent
   ],
   imports: [
     BrowserModule,
