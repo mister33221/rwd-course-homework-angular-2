@@ -56,3 +56,7 @@ $container-max-widths: (
 }
 ```
 4. Restart the server let it compile the changes.
+
+> Be careful
+> In the angular.json "styles" section, your customize css file have to be the last in the list.
+
